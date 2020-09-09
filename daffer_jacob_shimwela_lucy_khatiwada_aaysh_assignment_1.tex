@@ -1,0 +1,108 @@
+\documentclass[]{IEEEtran}
+\usepackage[]{cite}
+\usepackage[]{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{footnote}
+\usepackage[]{graphicx}
+\usepackage[]{hyperref}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\begin{document}
+\title{CSCE478 Assignment 1}
+\author{Jacob Daffer, Lucy Shimwela, Aayush Khatiwada\\
+(Dated: \today)}
+
+\maketitle
+
+\section{Data Summary}
+
+For our research we are utilizating white wine quality data from University of California, Irvine.
+\footnote{\url{https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv}}
+The data consists of measurements of acidity, chlorids, sulphates, alcohol, and residual sugar.
+This data is then paired with a quality rating ranging from 3 to 8; where 3 is of poor quality and 8 is of good quality wine.
+For the use of our K-NearestNeighbor qualifier, we chose to make quality our target variable to decide what is good or bad wine.
+
+We first converted the quality target variable to a binary vector by changing quality values less than 5 to 0 representing ``bad'' wine, and values greater than or equal to 5 to 1 representing ``good'' wine.
+These values are stored under a new target varaible labeled ``good''.
+
+\begin{table}[!h]
+\begin{tabular}{lrrr}
+\toprule
+{} &  fixed\_acidity &  volatile\_acidity &  citric\_acid \\
+\midrule
+count &    4898.000000 &       4898.000000 &  4898.000000 \\
+mean  &       6.854788 &          0.278241 &     0.334192 \\
+std   &       0.843868 &          0.100795 &     0.121020 \\
+min   &       3.800000 &          0.080000 &     0.000000 \\
+25\%   &       6.300000 &          0.210000 &     0.270000 \\
+50\%   &       6.800000 &          0.260000 &     0.320000 \\
+75\%   &       7.300000 &          0.320000 &     0.390000 \\
+max   &      14.200000 &          1.100000 &     1.660000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+\begin{tabular}{lrrr}
+\toprule
+{} &  residual\_sugar &    chlorides &  free\_sulfur\_dioxide \\
+\midrule
+count &     4898.000000 &  4898.000000 &          4898.000000 \\
+mean  &        6.391415 &     0.045772 &            35.308085 \\
+std   &        5.072058 &     0.021848 &            17.007137 \\
+min   &        0.600000 &     0.009000 &             2.000000 \\
+25\%   &        1.700000 &     0.036000 &            23.000000 \\
+50\%   &        5.200000 &     0.043000 &            34.000000 \\
+75\%   &        9.900000 &     0.050000 &            46.000000 \\
+max   &       65.800000 &     0.346000 &           289.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+\begin{tabular}{lrrr}
+\toprule
+{} &  total\_sulfur\_dioxide &      density &           pH \\
+\midrule
+count &           4898.000000 &  4898.000000 &  4898.000000 \\
+mean  &            138.360657 &     0.994027 &     3.188267 \\
+std   &             42.498065 &     0.002991 &     0.151001 \\
+min   &              9.000000 &     0.987110 &     2.720000 \\
+25\%   &            108.000000 &     0.991723 &     3.090000 \\
+50\%   &            134.000000 &     0.993740 &     3.180000 \\
+75\%   &            167.000000 &     0.996100 &     3.280000 \\
+max   &            440.000000 &     1.038980 &     3.820000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+\begin{tabular}{lrrr}
+\toprule
+{} &    sulphates &      alcohol &      quality \\
+\midrule
+count &  4898.000000 &  4898.000000 &  4898.000000 \\
+mean  &     0.489847 &    10.514267 &     5.877909 \\
+std   &     0.114126 &     1.230621 &     0.885639 \\
+min   &     0.220000 &     8.000000 &     3.000000 \\
+25\%   &     0.410000 &     9.500000 &     5.000000 \\
+50\%   &     0.470000 &    10.400000 &     6.000000 \\
+75\%   &     0.550000 &    11.400000 &     6.000000 \\
+max   &     1.080000 &    14.200000 &     9.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Methods}
+
+The runtime complexity of our KNN algorithm is $O(n^2)$ as each prediction has to build a list of instances for each loaded training data points. 
+Once finished it then has to sort that list taking $O(log_2n)$ as it is done by using the quicksort algorithm.
+After which the first 5 elements are used to determine what label is given as preditcion of the new data point.
+
+
+
+\section{Results}
+
+
+\end{document}
